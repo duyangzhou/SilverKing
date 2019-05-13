@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.ms.silverking.text.ObjectDefParser2;
 import com.ms.silverking.cloud.zookeeper.SKAclProvider;
 import com.ms.silverking.cloud.zookeeper.ZooKeeperExtended;
 import com.ms.silverking.net.security.Authenticator;
@@ -435,7 +436,7 @@ public class SKAdmin {
 				+ getTaskset(options)
 				+ getJavaCmdStart(options, classVars) 
 				+" "+ DHTNode.class.getCanonicalName()
-				+ " -reapPolicy \\\"<"+ reapPolicy.getClass().getCanonicalName() +">{"+ reapPolicy.toString() +"}\\\""
+				+ " -reapPolicy \\\""+ ObjectDefParser2.toClassAndDefString(reapPolicy) + "\\\""
 				+" -n "+ gc.getClientDHTConfiguration().getName() 
 				+" -z "+ gc.getClientDHTConfiguration().getZKConfig()
 				+" -into "+ options.inactiveNodeTimeoutSeconds
